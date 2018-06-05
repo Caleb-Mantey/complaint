@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
-
+import { HomePage } from '../home/home'
 /**
  * Generated class for the SignInPage page.
  *
@@ -21,4 +21,7 @@ export class SignInPage {
     console.log('ionViewDidLoad SignInPage');
   }
 
+  OpenPage(){
+    this.navCtrl.push(HomePage);
+  }
 }
