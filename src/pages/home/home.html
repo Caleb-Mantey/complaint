@@ -14,7 +14,7 @@
 
 <ion-content padding>
 <div style="text-align: center;">
-    <ion-avatar  class="Myicon">
+    <ion-avatar  class="Myicon" (click)="OpenComplaint()">
       <ion-icon color="danger" name="contact"></ion-icon>
     </ion-avatar>
 
@@ -28,5 +28,19 @@
 </div>
 
 
-  <button ion-button class="button" block>Quick Complaint</button>
+  <button ion-button
+          class="button"
+          (click)="OpenQuickComplaint()"
+          block>
+    Quick Complaint
+  </button>
+
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger"><ion-icon name="arrow-dropup"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab color="danger-bright"><ion-icon name="information-circle"></ion-icon></button>
+      <button ion-fab color="danger-bright" (click)="Logout()"><ion-icon name="log-out"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

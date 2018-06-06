@@ -1,23 +1,42 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>COMPLAINT</ion-title>
+    <ion-buttons end>
+      <button ion-button style="background-color: #520002;">
+        KT-117B
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
+    <button ion-item>
+      <ion-icon name="wifi" item-start></ion-icon>
+        Wifi Not Working
+    </button>
+
+    <button ion-item>
+      <ion-icon name="wifi" item-start></ion-icon>
+        Water Problem
+    </button>
+
+    <button ion-item>
+      <ion-icon name="wifi" item-start></ion-icon>
+        Lights Not Working
+    </button>
+
+    <button ion-item>
+      <ion-icon name="wifi" item-start></ion-icon>
+        Sockets/Switches Not Working
+    </button>
+
+    <button ion-item>
+      <ion-icon name="wifi" item-start></ion-icon>
+        Fan Not Working
     </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

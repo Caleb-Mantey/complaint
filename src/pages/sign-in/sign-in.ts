@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home'
+import { HomePage } from '../home/home';
+import { AppProvider } from '../../providers/app/app';
+
 /**
  * Generated class for the SignInPage page.
  *
@@ -11,10 +13,11 @@ import { HomePage } from '../home/home'
 @Component({
   selector: 'page-sign-in',
   templateUrl: 'sign-in.html',
+  providers: [AppProvider]
 })
 export class SignInPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController , public appProvider: AppProvider, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
