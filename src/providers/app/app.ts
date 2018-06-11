@@ -21,7 +21,7 @@ export class AppProvider {
       this.navCtrl.pop();
   }
 
-  showPrompt(title: string, message: string) {
+  showLogoutPrompt(title: string, message: string) {
     let prompt = this.alertCtrl.create({
       title: title,
       message: message,
@@ -38,6 +38,22 @@ export class AppProvider {
           handler: data => {
 
             console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  showPrompt(title: string, message: string) {
+    let prompt = this.alertCtrl.create({
+      title: title,
+      message: message,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: data => {
+            console.log('Ok clicked');
           }
         }
       ]

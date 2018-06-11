@@ -15,7 +15,11 @@ import { NavController, NavParams,  Content, TextInput } from 'ionic-angular';
 export class ComplaintPage {
     @ViewChild(Content) content: Content;
     @ViewChild('chat_input') messageInput: TextInput;
+    UserData;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.UserData = JSON.parse(localStorage.getItem("UserData"));
+    console.log(this.UserData);
   }
 
   ionViewDidLoad() {

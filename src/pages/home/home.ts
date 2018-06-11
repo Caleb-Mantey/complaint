@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { ComplaintPage } from '../complaint/complaint';
 import { AppProvider } from '../../providers/app/app';
@@ -10,13 +10,15 @@ import { AppProvider } from '../../providers/app/app';
   providers: [AppProvider]
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController, public appProvider: AppProvider) {
-
+  UserData;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appProvider: AppProvider) {
+      this.UserData = this.navParams.get("UserData");
+      localStorage.setItem("UserData", JSON.stringify(this.UserData));
+      console.log(this.UserData);
   }
 
   Logout(){
-    this.appProvider.showPrompt("Confirmation!", "Are you sure you want to logout?");
+    this.appProvider.showLogoutPrompt("Confirmation!", "Are you sure you want to logout?");
   }
 
   OpenQuickComplaint(){

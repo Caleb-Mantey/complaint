@@ -19,16 +19,18 @@
 
   <ion-item>
     <ion-label stacked>Your Name</ion-label>
-    <ion-input type="name" value=""></ion-input>
+    <ion-input type="name" value=""
+      [(ngModel)]="name"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label stacked>Your Room Number</ion-label>
-    <ion-input type="roomNum"></ion-input>
+    <ion-input type="roomNum"
+    [(ngModel)]="roomNum"></ion-input>
   </ion-item>
 
 <div padding style="text-align: center;">
   <button ion-button class="button" block
-         (click)="OpenPage()">CONTINUE</button>
+         (click)="SignIN()">CONTINUE</button>
 </div>
 </ion-content>

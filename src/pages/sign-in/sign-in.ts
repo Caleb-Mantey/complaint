@@ -17,6 +17,9 @@ import { AppProvider } from '../../providers/app/app';
 })
 export class SignInPage {
 
+  name: string;
+  roomNum: string;
+
   constructor(public navCtrl: NavController , public appProvider: AppProvider, public navParams: NavParams) {
   }
 
@@ -24,7 +27,21 @@ export class SignInPage {
     console.log('ionViewDidLoad SignInPage');
   }
 
-  OpenPage(){
-    this.navCtrl.push(HomePage);
+  SignIN(){
+    if(this.name == "" || this.name == null){
+      this.appProvider.showPrompt("Sign-In Error!", "Make sure a field is not left empty.");
+    }else{
+      if(parseInt(this.roomNum.toUpperCase().replace("KT", ""), 10) > 0 && parseInt(this.roomNum.toUpperCase().replace("KT", ""), 10) < 343){
+        this.OpenPage({"roomNum": this.roomNum.toUpperCase().replace("KT", ""), "name": this.name.toUpperCase()});
+        //console.log('Valid Room No ' + parseInt(this.roomNum, 10));
+      }else{
+        this.appProvider.showPrompt("Sign-In Error!", "Make sure you enter a valid room number.");
+        //console.log('InValid Room No ' + parseInt(this.roomNum, 10));
+      }
+    }
+  }
+
+  OpenPage(data: any){
+    this.navCtrl.push(HomePage, {"UserData": data});
   }
 }
