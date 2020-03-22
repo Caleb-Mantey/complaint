@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AppProvider } from '../../providers/app/app';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the SignInPage page.
@@ -20,7 +21,7 @@ export class SignInPage {
   name: string;
   roomNum: string;
 
-  constructor(public navCtrl: NavController , public appProvider: AppProvider, public navParams: NavParams) {
+  constructor(public navCtrl: NavController , public appProvider: AppProvider, public navParams: NavParams, private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -42,6 +43,8 @@ export class SignInPage {
   }
 
   OpenPage(data: any){
+    localStorage.setItem("UserData", JSON.stringify(data));
+    this.storage.set("UserData", JSON.stringify(data));
     this.navCtrl.push(HomePage, {"UserData": data});
   }
 }

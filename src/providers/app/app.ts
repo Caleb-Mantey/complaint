@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
+
 /*
   Generated class for the AppProvider provider.
 

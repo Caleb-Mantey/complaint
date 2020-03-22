@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FirebaseServiceProvider } from './../../providers/firebase-service/firebase-service';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-list',
@@ -7,32 +9,43 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ListPage {
   selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
   UserData;
+  items = [{
+    title: 'Wifi Not Working',
+    icon: 'wifi'
+    },{
+      title: 'Water Problem',
+      icon: 'wifi'
+    },{
+      title: 'Lights Not Working',
+      icon: 'wifi'
+    },{
+      title: 'Sockets/Switches Not Working',
+      icon: 'wifi'
+    },{
+      title: 'Fan Not Working',
+      icon: 'wifi'
+    }];
+  constructor(public toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams,
+    public FirebaseService: FirebaseServiceProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    //this.selectedItem = navParams.get('item');
     this.UserData = JSON.parse(localStorage.getItem("UserData"));
-    // Let's populate this page with some filler content for funzies
-    /*this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }*/
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
-    });
-  }
+  addItem(message) {
+        this.FirebaseService.addItem({"name": this.UserData.name,"roomNum": this.UserData.roomNum, "message": message});
+        this.Processing();
+    }
+
+    Processing() {
+        setTimeout(() => {
+          const toast = this.toastCtrl.create({
+           message: 'Your Complaint is being processed!',
+           duration: 3000,
+           position: 'middle',
+         });
+         toast.present();
+        }, 1500);
+    }
 }

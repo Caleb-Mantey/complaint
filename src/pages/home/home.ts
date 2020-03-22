@@ -13,7 +13,6 @@ export class HomePage {
   UserData;
   constructor(public navCtrl: NavController, public navParams: NavParams, public appProvider: AppProvider) {
       this.UserData = this.navParams.get("UserData");
-      localStorage.setItem("UserData", JSON.stringify(this.UserData));
       console.log(this.UserData);
   }
 

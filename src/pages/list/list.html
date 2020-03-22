@@ -14,29 +14,10 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item>
+    <button ion-item *ngFor="let item of items" (click)="addItem(item.title)">
       <ion-icon name="wifi" item-start></ion-icon>
-        Wifi Not Working
+      {{item.title}}
     </button>
 
-    <button ion-item>
-      <ion-icon name="wifi" item-start></ion-icon>
-        Water Problem
-    </button>
-
-    <button ion-item>
-      <ion-icon name="wifi" item-start></ion-icon>
-        Lights Not Working
-    </button>
-
-    <button ion-item>
-      <ion-icon name="wifi" item-start></ion-icon>
-        Sockets/Switches Not Working
-    </button>
-
-    <button ion-item>
-      <ion-icon name="wifi" item-start></ion-icon>
-        Fan Not Working
-    </button>
   </ion-list>
 </ion-content>
